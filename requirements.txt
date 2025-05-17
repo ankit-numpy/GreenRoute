@@ -1,0 +1,8 @@
+torch
+numpy
+pandas
+scikit-learn
+openrouteservice
+requests
+folium
+streamlit-folium
