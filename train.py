@@ -10,7 +10,7 @@ import numpy as np
 VEHICLE_EMISSION = {
     "Small Van": 120,
     "Medium Truck": 250,
-    "Large Truck": 400
+    "Large Truck": 450
 }
 
 TRAFFIC_MAP = {
@@ -26,7 +26,7 @@ VEHICLE_TYPE_MAP = {
 }
 
 # Generate synthetic dataset
-def generate_data(n=2000):
+def generate_data(n=200000):
     data = []
     for _ in range(n):
         distance = np.random.uniform(5, 100)  # km
@@ -105,7 +105,7 @@ X_test_tensor = torch.tensor(X_test, dtype=torch.float32)
 y_test_tensor = torch.tensor(y_test, dtype=torch.float32)
 
 # Training loop
-epochs = 2000
+epochs = 3000
 for epoch in range(epochs):
     model.train()
     optimizer.zero_grad()
@@ -120,7 +120,7 @@ for epoch in range(epochs):
 
 # Save model and scaler
 torch.save(model.state_dict(), "models/carbon_model.pt")
-np.save("scaler_mean.npy", scaler.mean_)
-np.save("scaler_scale.npy", scaler.scale_)
+np.save("models/scaler_mean.npy", scaler.mean_)
+np.save("models/scaler_scale.npy", scaler.scale_)
 
 print("✅ Model and scaler saved successfully.")
